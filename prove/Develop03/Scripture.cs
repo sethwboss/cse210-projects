@@ -41,11 +41,11 @@ public class Scripture
         {
             int randomIndex = random.Next(_words.Count);
             
-                if (!_words[randomIndex].IsHidden())
-                {
-                    _words[randomIndex].Hide();
-                    hiddenCount++;
-                }
+            if (!_words[randomIndex].IsHidden())
+            {
+                _words[randomIndex].Hide();
+                hiddenCount++;
+            }
         }
     }
 

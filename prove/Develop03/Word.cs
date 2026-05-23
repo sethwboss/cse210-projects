@@ -24,7 +24,8 @@ public class Word
         {
             return false;
         }
-        else {
+        else
+        {
             return true;
         }
     

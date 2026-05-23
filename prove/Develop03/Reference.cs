@@ -1,6 +1,3 @@
-using System.Collections.Concurrent;
-using System.Data;
-using System.Security.Cryptography;
 
 public class Reference
 {
@@ -29,11 +26,11 @@ public class Reference
 
         if (_endVerse == 0)
         {
-                    return $"{_book} {_chapter}:{_startVerse}";
+            return $"{_book} {_chapter}:{_startVerse}";
         }
         else
         {
-                    return $"{_book} {_chapter}:{_startVerse}-{_endVerse}";
+            return $"{_book} {_chapter}:{_startVerse}-{_endVerse}";
 
         }
     }
