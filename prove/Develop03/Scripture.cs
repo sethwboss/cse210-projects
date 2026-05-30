@@ -13,13 +13,14 @@ public class Scripture
 
     private List<Word> SplitString(string text)
     {
+        List<Word> localWords = new List<Word>{};
         string[] splitList = text.Split(' ');
         foreach(string word in splitList)
         {
             Word singleWord = new Word(word);
-            _words.Add(singleWord);
+            localWords.Add(singleWord);
         }
-        return _words;
+        return localWords;
     }
 
     public bool AllWordsHidden()
