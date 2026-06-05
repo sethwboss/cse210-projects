@@ -9,12 +9,12 @@ public class WritingAssignment : Assignment
 
   
 
-    public string Gettitle()
+    public string GetTitle()
     {
         return _title;
     }
 
-    public void Settitle(string title)
+    public void SetTitle(string title)
     {
         _title = title;
     }
