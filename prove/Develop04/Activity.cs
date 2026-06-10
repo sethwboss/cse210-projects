@@ -42,7 +42,16 @@ public class Activity
 
     public void LoadingTimer (int seconds)
     {
-        
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(seconds);
+
+        while (DateTime.Now < endTime)
+        {
+            Console.Write($"{seconds}");
+            Thread.Sleep(1000);
+            Console.Write("\b \b");
+            seconds--;
+        }
     }
 
     public void LoadingSpinner (int seconds)

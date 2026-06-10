@@ -20,16 +20,26 @@ class Program
             if (userSelect == "1")
             {
                 BreathingActivity breathingActivity = new BreathingActivity();
+                breathingActivity.DisplayWelcome();
+                breathingActivity.AskDuration();
                 breathingActivity.RunActivity();
-                loop = false;
+                breathingActivity.DisplayEnding();
             }
             if (userSelect == "2")
             {
-                loop = false;
+                ReflectionActivity reflectionActivity = new ReflectionActivity();
+                reflectionActivity.DisplayWelcome();
+                reflectionActivity.AskDuration();
+                reflectionActivity.RunActivity();
+                reflectionActivity.DisplayEnding();
             }
             if (userSelect == "3")
             {
-                loop = false;
+                ListingActivity listingActivity = new ListingActivity();
+                listingActivity.DisplayWelcome();
+                listingActivity.AskDuration();
+                listingActivity.RunActivity();
+                listingActivity.DisplayEnding();
             }
 
             if (userSelect == "4")
