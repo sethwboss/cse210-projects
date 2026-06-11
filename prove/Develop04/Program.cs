@@ -2,9 +2,10 @@ using System;
 
 /* 
 Exceeding requirements and showing creativity:
+I added a method in listingactivity to allow the user to save their responses as well as the prompts into a file of their choice. It lets them create a new file or append their responses/prompt onto an existing one, so they can look at and ponder their responses later.
 
 NOTE: I had trouble running this program in VS Code (The menu would occasionally print twice and the "Get ready..." text wouldn't clear. This was not because of faulty code but some other error). I did extensive research with AI, and could not figure out what was causing these errors.
-However, when I ran the project through a Powershell terminal, all of these errors went away. Here is the command I used to run it if you encounter the same issue: 
+However, when I ran the project through a Powershell terminal, all of these errors went away, and it ran perfectly. Here is the command I used to run it if you encounter the same issue: 
 cd 'C:\Users\sethw\Documents\BYU-Idaho Classes\Spring_2026\CSE 210\cse210-projects\prove\Develop04'
 dotnet run
 */
@@ -17,6 +18,7 @@ class Program
         bool loop = true;
         while (loop) {
 
+            Thread.Sleep(500);
             Console.Clear();
             Console.WriteLine("Menu Options:");
             Console.WriteLine("  1. Start Breathing activity");
@@ -52,6 +54,9 @@ class Program
             {
                 loop = false;
             }
+            Console.Clear();
+            Thread.Sleep(500);
+            Console.Clear();
         }
 
     }

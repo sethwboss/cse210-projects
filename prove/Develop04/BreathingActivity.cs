@@ -23,14 +23,14 @@ public class BreathingActivity : Activity
     public void BreathIn()
     {
         Console.WriteLine();
-        Console.Write("Breath In...");
+        Console.Write("Breathe In...");
         LoadingTimer(4);
     }
 
     public void BreathOut()
     {
         Console.WriteLine();
-        Console.Write("Now breath out...");
+        Console.Write("Now breathe out...");
         LoadingTimer(6);
         Console.WriteLine();
     }

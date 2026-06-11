@@ -34,8 +34,8 @@ public class ReflectionActivity : Activity
     {
         Random random = new Random();
         int randomIndex = random.Next(_prompts.Count);
-        string _prompt = _prompts[randomIndex];
-        return _prompt;
+        string prompt = _prompts[randomIndex];
+        return prompt;
     }
     private string GetQuestion()
     {
@@ -50,9 +50,9 @@ public class ReflectionActivity : Activity
         Console.WriteLine("Consider the following prompt:");
         Console.WriteLine();
 
-        string prompt = GetPrompt();
+        string currentPrompt = GetPrompt();
 
-        Console.WriteLine($" --- {prompt} ---");
+        Console.WriteLine($" --- {currentPrompt} ---");
 
         Console.WriteLine();
         Console.Write("When you have something in mind, press enter to continue. ");
@@ -78,8 +78,6 @@ public class ReflectionActivity : Activity
             LoadingSpinner(10);
 
             
-
-            //could also make sure no duplicate question until we've gone through them all  - frmo the video
 
         }
     }

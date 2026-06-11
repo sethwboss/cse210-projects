@@ -1,5 +1,4 @@
 
-
 public class ListingActivity : Activity
 {
     public ListingActivity() : base("Listing Activity", "reflect on the good things in your life by having you list as many things as you can in a certain area.") {}
@@ -15,7 +14,7 @@ public class ListingActivity : Activity
     private  List<string> _answers = new List<string>();
 
     private string _currentPrompt = "";
-    private int count;
+    private int _count;
 
 
     public void RunActivity()
@@ -24,7 +23,7 @@ public class ListingActivity : Activity
         
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(_duration);
-        count = 0;
+        _count = 0;
 
         while (DateTime.Now < endTime)
         {
@@ -44,8 +43,8 @@ public class ListingActivity : Activity
     {
         Random random = new Random();
         int randomIndex = random.Next(_prompts.Count);
-        string _prompt = _prompts[randomIndex];
-        return _prompt;
+        string prompt = _prompts[randomIndex];
+        return prompt;
     }
 
     public void DisplayPrompt()
@@ -64,19 +63,18 @@ public class ListingActivity : Activity
         Console.Write("> ");
         string answer = Console.ReadLine();
         _answers.Add(answer);
-        count++;
+        _count++;
     }
 
     public void CountUserInput()
     {
-        Console.WriteLine($"You listed {count} items!");
+        Console.WriteLine($"You listed {_count} items!");
         Console.WriteLine();
     }
 
     public bool SaveResponses()
     {
-        
-        // write _answers line 2 and _current prompt line 1
+    
 
         try
         {
