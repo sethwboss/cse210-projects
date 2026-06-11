@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 public class Activity
 {
     public Activity (string name, string description)
@@ -20,7 +22,6 @@ public class Activity
         Console.Clear();
         Console.WriteLine("Get ready...");
         LoadingSpinner(3);
-        Console.WriteLine();
     }
 
     public void AskDuration ()
@@ -28,7 +29,6 @@ public class Activity
         Console.WriteLine();
         Console.Write("How long, in seconds, would you like for your session? ");
         _duration = int.Parse(Console.ReadLine());
-        LoadingTimer(_duration);
     }
 
     public void DisplayEnding ()
@@ -36,8 +36,10 @@ public class Activity
         Console.WriteLine();
         Console.Write("Well done!!");
         Console.WriteLine();
-        Console.WriteLine($"You have completed another 30 seconds of the {_name}.");
         LoadingSpinner(3);
+        Console.WriteLine($"You have completed another {_duration} seconds of the {_name}.");
+        LoadingSpinner(3);
+        Console.Clear();
     }
 
     public void LoadingTimer (int seconds)
@@ -49,8 +51,14 @@ public class Activity
         {
             Console.Write($"{seconds}");
             Thread.Sleep(1000);
-            Console.Write("\b \b");
             seconds--;
+
+            int length = seconds.ToString().Length;
+
+            for (int j = 0; j < length; j++)
+            {
+                Console.Write("\b \b");
+            }
         }
     }
 
@@ -61,20 +69,24 @@ public class Activity
 
         while (DateTime.Now < endTime)
         {
-            Thread.Sleep(250);
             Console.Write("|");
-            Console.Write("\b \b");
             Thread.Sleep(250);
+            Console.Write("\b \b");
+
             Console.Write("/");
-            Console.Write("\b \b");
             Thread.Sleep(250);
+            Console.Write("\b \b");
+
             Console.Write("-");
-            Console.Write("\b \b");
             Thread.Sleep(250);
+            Console.Write("\b \b");
+
             Console.Write("\\");
-            Console.Write("\b \b");
             Thread.Sleep(250);
+            Console.Write("\b \b");
         }
+
+        Console.WriteLine();
 
     }
 

@@ -1,6 +1,6 @@
 public class BreathingActivity : Activity
 {
-    public BreathingActivity() : base("Breathing Activity", "relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing")
+    public BreathingActivity() : base("Breathing Activity", "relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.")
     {
     
     }
@@ -29,8 +29,10 @@ public class BreathingActivity : Activity
 
     public void BreathOut()
     {
+        Console.WriteLine();
         Console.Write("Now breath out...");
         LoadingTimer(6);
+        Console.WriteLine();
     }
 
     
