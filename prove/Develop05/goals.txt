@@ -1,0 +1,5 @@
+871
+SimpleGoal|seth's simple goal|this is the description|50|1
+ChecklistGoal|checky|yesssssir|800|999|9|1
+EternalGoal|scriptures|study every day|1
+ChecklistGoal|checklisttest|description|10|5000|2|2

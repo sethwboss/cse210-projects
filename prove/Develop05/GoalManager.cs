@@ -3,7 +3,7 @@ public class GoalManager
     
     private List<Goal> _goalList = new List<Goal>();
 
-    int _totalScore = 0;
+    private int _totalScore = 0;
 
     public void DisplayScore()
     {
@@ -42,11 +42,11 @@ public class GoalManager
         }
         if (response == 3)
         {
-            Console.Write("How many times does this goal need to be asccomplished for a bonus? ");
+            Console.Write("How many times does this goal need to be accomplished for a bonus? ");
             int repeatAmount = int.Parse(Console.ReadLine());
             Console.Write("What is the bonus for accomplishing it that many times? ");
             int bonusValue = int.Parse(Console.ReadLine());
-            ChecklistGoal checklistgoal = new ChecklistGoal(name, description, pointValue, repeatAmount, bonusValue);
+            ChecklistGoal checklistgoal = new ChecklistGoal(name, description, pointValue, bonusValue, repeatAmount);
             _goalList.Add(checklistgoal);
         
         }
@@ -54,16 +54,28 @@ public class GoalManager
 
 
 
-
+/* For the ListGoals count:
+I intentionally kept the numbering aligned with the underlying goal list so that in the RecordEvent() method, 
+selecting a goal by number would always reference the correct goal, even after completed goals were hidden.
+This way of doing it also ensures that the user understands that some of the tasks are hidden, 
+if it is only showing task 2 and task 4 as "2. Task name (description)", etc. and not 1 and 3.*/
 
     public void ListGoals()
     {
         Console.WriteLine("The goals are:");
-        Console.WriteLine($"{_goalList}");
+        int count = 0;
+        foreach (Goal goal in _goalList) {
+            count ++;
+            if (!goal.GetHiddenState())
+            {
+                Console.WriteLine($"{count}. {goal.GetDisplayString()}");
+            }
+        }
     }
     public void SaveGoals()
     {
-        string filename = "myFile.txt";
+        Console.WriteLine("What is the filename for the goal file? ");
+        string filename = Console.ReadLine();
 
         using (StreamWriter outputFile = new StreamWriter(filename))
         {
@@ -71,12 +83,13 @@ public class GoalManager
             outputFile.WriteLine(_totalScore);
             foreach (Goal goal in _goalList)
             {
-                outputFile.WriteLine(goal.GetSaveString(goal));
+                outputFile.WriteLine(goal.GetSaveString());
             }
         }
     }
     public void LoadGoals()
     {
+        _goalList.Clear();
         Console.WriteLine("What is the filename for the goal file? ");
         string filename = Console.ReadLine();
 
@@ -89,7 +102,6 @@ public class GoalManager
         {
             string[] parts = line.Split("|");
             string name = parts[0];
-            Console.Write($"{line} ");
             if (name == "SimpleGoal")
             {
                 _goalList.Add(SimpleGoal.FromSaveString(line));
@@ -108,11 +120,20 @@ public class GoalManager
     }
     public void RecordEvent()
     {
-        Console.WriteLine($"You have {_totalScore} points");
+        ListGoals();
+        Console.Write("Which goal did you accomplish? ");
+        int response = int.Parse(Console.ReadLine());
+        
+        Goal goal = _goalList[response - 1];
+        _totalScore += goal.RecordEvent();
+        Console.WriteLine();
+        Console.WriteLine($"You now have {_totalScore} points");
     }
 
     public void HideGoals()
     {
-        
+        foreach (Goal goal in _goalList) {
+            goal.HideCompleted();
+        }
     }
 }
