@@ -10,17 +10,16 @@ class Program
     {
         bool loop = true;
 
-        //Program program = new Program();
-        //GoalManager goalmanage = new GoalManager();
+        Program program = new Program();
+        MenuManager menuManager = new MenuManager();
 
         while (loop)
         {
-            goalmanage.DisplayScore();
-            loop = program.DisplayMenu(goalmanage);
+            loop = program.DisplayMenu(menuManager);
         }
     }
 
-    public bool DisplayMenu(GoalManager goalmanager)
+    public bool DisplayMenu(MenuManager menuManager)
     {
         Console.WriteLine("Menu Options:");
         Console.WriteLine("   1. Create New Study Set");
@@ -35,27 +34,27 @@ class Program
         int response = int.Parse(Console.ReadLine());
 
         if (response == 1) {
-            goalmanager.CreateGoal();
+            menuManager.CreateStudySet();
             return true;
         }
         if (response == 2) {
-            goalmanager.HideGoals();
+            menuManager.DelStudySet();
             return true;
         }
         if (response == 3) {
-            goalmanager.ListGoals();
+            menuManager.QuizNames();
             return true;
         }
         if (response == 4) {
-            goalmanager.SaveGoals();
+            menuManager.QuizTerms();
             return true;
         }
         if (response == 5) {
-            goalmanager.LoadGoals();
+            menuManager.MultipleChoiceQuiz();
             return true;
         }
         if (response == 6) {
-            goalmanager.RecordEvent();
+            menuManager.SeeScores();
             return true;
         }
         if (response == 7) {

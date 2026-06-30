@@ -1,9 +1,29 @@
 public class MenuManager
 {
-    
-    private List<Quiz> _quizList = new List<Quiz>();
-
-
-    
+    public void CreateStudySet()
+    {
+        
+    }
+    public void DelStudySet()
+    {
+        
+    }
+    public void QuizNames()
+    {
+        
+    }
+    public void QuizTerms()
+    {
+        
+    }
+    public void MultipleChoiceQuiz()
+    {
+        
+    }
+    public void SeeScores()
+    {
+        
+    }
+ 
     
 }
