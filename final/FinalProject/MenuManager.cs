@@ -1,3 +1,5 @@
+using Microsoft.VisualBasic.FileIO;
+
 public class MenuManager
 {
 
@@ -5,11 +7,13 @@ public class MenuManager
     public void CreateStudySet()
     {
         Console.WriteLine();
+        Console.Write("What is the name of your Study Set? ");
+        string setName = Console.ReadLine();
         Console.Write("How many flashcards would you like in this study set? (If you have 3 terms & 3 definitions, enter 3): ");
         int loopAmount = int.Parse(Console.ReadLine());
 
         int count = 0;
-        StudySet studySet = new StudySet();
+        StudySet studySet = new StudySet(setName);
         while (count < loopAmount)
         {
             Console.WriteLine();
@@ -19,27 +23,50 @@ public class MenuManager
             Console.Write("Enter the definition: ");
             string definition = Console.ReadLine();
 
-            FlashCard flashcard = new FlashCard();
+            FlashCard flashcard = new FlashCard(term, definition);
             studySet.AddCard(flashcard);
             count ++;
         }
-        Console.WriteLine("Here is your study set:");
-        Console.WriteLine(studySet.GetStudySetString());
+        _allStudySets.Add(studySet);
+        Console.WriteLine();
+        Console.WriteLine("Your study set has been created!");
+        Console.WriteLine();
     }
+
+    public void DisplayStudySets()
+    {
+        Console.WriteLine();
+        Console.WriteLine("Here are the current Study Sets:");
+
+        int count = 0;
+        foreach (StudySet studySet in _allStudySets) {
+            count ++;
+            string studySetName = studySet.GetStudySetName();
+            Console.WriteLine($"{count}. {studySetName}");
+        }
+    }
+
     public void SeeStudySet()
     {
-        Console.WriteLine("The goals are:");
-        int count = 0;
-        foreach (StudySet studySet in _goalList) {
-            count ++;
+        DisplayStudySets();
+        Console.WriteLine();
+        Console.Write("Which study set would you like to view? (type the number 1, 2, etc.): ");
+        int selectedNum = int.Parse(Console.ReadLine());
+        Console.WriteLine();
 
-            Console.WriteLine($"{count}. {goal.GetDisplayString()}");
+        StudySet selectedStudySet = _allStudySets[selectedNum - 1];
+        Console.WriteLine(selectedStudySet.GetStudySetString());
 
-        }
     }
     public void DelStudySet()
     {
-        
+        DisplayStudySets();
+        Console.WriteLine();
+        Console.Write("Which study set would you like to delete? (type the number 1, 2, etc.): ");
+        int selectedNum = int.Parse(Console.ReadLine());
+        Console.WriteLine();
+        _allStudySets.RemoveAt(selectedNum - 1);
+
     }
     public void QuizNames()
     {

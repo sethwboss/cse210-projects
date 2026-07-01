@@ -1,7 +1,10 @@
 public class StudySet {
     
-    public StudySet(){}
+    public StudySet(string name){
+        _name = name;
+    }
 
+    protected string _name = "";
     
     protected List<FlashCard> _studySet = new List<FlashCard>{};
 
@@ -10,9 +13,29 @@ public class StudySet {
         _studySet.Add(flashCard);
     }
 
+    public string GetStudySetName()
+    {
+        return _name;
+    }
+
     public string GetStudySetString() {
         
-        FlashCard.getstudysetstring
+        Console.WriteLine($"{_name}");
+        
+        string _totalLines = "";
+        int count = 0;
+        foreach (FlashCard flashCard in _studySet) {
+            count ++;
+
+            string _line = $"{count}. {flashCard.GetDisplayString()}";
+
+            _totalLines += _line;
+            _totalLines += "\n";
+
+        }
+        
+
+        return _totalLines;
     }
 
     //public abstract string GetSaveString();

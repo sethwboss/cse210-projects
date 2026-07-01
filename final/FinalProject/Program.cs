@@ -12,6 +12,7 @@ class Program
 
         Program program = new Program();
         MenuManager menuManager = new MenuManager();
+        Console.Clear();
 
         while (loop)
         {
@@ -23,8 +24,8 @@ class Program
     {
         Console.WriteLine("Menu Options:");
         Console.WriteLine("   1. Create New Study Set");
-        Console.WriteLine("   2. Delete Study Set");
-        Console.WriteLine("   3. See Study Set");
+        Console.WriteLine("   2. View Study Set");
+        Console.WriteLine("   3. Delete Study Set");
         Console.WriteLine("   4. Quiz Names");
         Console.WriteLine("   5. Quiz Terms");
         Console.WriteLine("   6. Multiple Choice Quiz");
