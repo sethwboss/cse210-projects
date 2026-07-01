@@ -71,15 +71,41 @@ public class MenuManager
     }
     public void QuizNames()
     {
-        
+        NameQuiz nameQuiz = new NameQuiz();
+
+        DisplayStudySets();
+        Console.WriteLine();
+        Console.Write("Which study set would you like to quiz from? (type the number 1, 2, etc.): ");
+        int selectedNum = int.Parse(Console.ReadLine());
+        Console.WriteLine();
+        StudySet selectedStudySet = _allStudySets[selectedNum - 1];
+
         // 5 points for getting all right
     }
     public void QuizTerms()
     {
+        TermQuiz termQuiz = new TermQuiz();
+
+        DisplayStudySets();
+        Console.WriteLine();
+        Console.Write("Which study set would you like to quiz from? (type the number 1, 2, etc.): ");
+        int selectedNum = int.Parse(Console.ReadLine());
+        Console.WriteLine();
+        StudySet selectedStudySet = _allStudySets[selectedNum - 1];
+
         // 10 points for getting all right
     }
     public void MultipleChoiceQuiz()
     {
+        MultipleQuiz multipleQuiz = new MultipleQuiz();
+
+        DisplayStudySets();
+        Console.WriteLine();
+        Console.Write("Which study set would you like to quiz from? (type the number 1, 2, etc.): ");
+        int selectedNum = int.Parse(Console.ReadLine());
+        Console.WriteLine();
+        StudySet selectedStudySet = _allStudySets[selectedNum - 1];
+        
         // 10 points for getting all right
     }
     public void SeeScores()

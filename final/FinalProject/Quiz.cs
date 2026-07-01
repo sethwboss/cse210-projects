@@ -13,5 +13,10 @@ public class Quiz
         
     }
 
+    public void Something()
+    {
+        
+    }
+
 
 }
