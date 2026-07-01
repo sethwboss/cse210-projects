@@ -12,11 +12,19 @@ public class FlashCard {
     protected string _definition = "";
 
 
-
-    public string GetDefinition(string definition) {
+    public List<FlashCard> GetStudySetString() {
+        
+        foreach (FlashCard studyset in _studySet)
+        {
+            string _line =  $"{_term} ({_definition})";
+        }
+    }
+    
+    public string GetDefinition() {
         return _definition;
     }
-    public string GetTerm(string term) {
+    public string GetTerm() {
         return _term;
     }
+
 }

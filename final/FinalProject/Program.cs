@@ -24,11 +24,12 @@ class Program
         Console.WriteLine("Menu Options:");
         Console.WriteLine("   1. Create New Study Set");
         Console.WriteLine("   2. Delete Study Set");
-        Console.WriteLine("   3. Quiz Names");
-        Console.WriteLine("   4. Quiz Terms");
-        Console.WriteLine("   5. Multiple Choice Quiz");
-        Console.WriteLine("   6. See Scores");
-        Console.WriteLine("   7. Quit");
+        Console.WriteLine("   3. See Study Set");
+        Console.WriteLine("   4. Quiz Names");
+        Console.WriteLine("   5. Quiz Terms");
+        Console.WriteLine("   6. Multiple Choice Quiz");
+        Console.WriteLine("   7. See Scores");
+        Console.WriteLine("   8. Quit");
         Console.Write("Select a choice from the menu: ");
 
         int response = int.Parse(Console.ReadLine());
@@ -38,26 +39,30 @@ class Program
             return true;
         }
         if (response == 2) {
-            menuManager.DelStudySet();
+            menuManager.SeeStudySet();
             return true;
         }
         if (response == 3) {
-            menuManager.QuizNames();
+            menuManager.DelStudySet();
             return true;
         }
         if (response == 4) {
-            menuManager.QuizTerms();
+            menuManager.QuizNames();
             return true;
         }
         if (response == 5) {
-            menuManager.MultipleChoiceQuiz();
+            menuManager.QuizTerms();
             return true;
         }
         if (response == 6) {
-            menuManager.SeeScores();
+            menuManager.MultipleChoiceQuiz();
             return true;
         }
         if (response == 7) {
+            menuManager.SeeScores();
+            return true;
+        }
+        if (response == 8) {
             return false;
         }
         else {
