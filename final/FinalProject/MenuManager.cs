@@ -4,6 +4,7 @@ public class MenuManager
 {
 
     private List<StudySet> _allStudySets = new List<StudySet>{};
+    private int _totalScore = 0;
     public void CreateStudySet()
     {
         Console.WriteLine();
@@ -71,18 +72,26 @@ public class MenuManager
     public void QuizNames()
     {
         
+        // 5 points for getting all right
     }
     public void QuizTerms()
     {
-        
+        // 10 points for getting all right
     }
     public void MultipleChoiceQuiz()
     {
-        
+        // 10 points for getting all right
     }
     public void SeeScores()
     {
-        
+        Console.WriteLine();
+        Console.WriteLine($"Your total score is {_totalScore}");
+
+        if (_totalScore >= 100)
+        {
+            Console.WriteLine();
+            Console.WriteLine("*** CONGRATULATIONS!! You've reached beyond 100 points. You're a master at studying. ***");
+        }
     }
  
     

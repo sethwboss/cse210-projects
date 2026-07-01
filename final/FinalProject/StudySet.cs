@@ -4,9 +4,9 @@ public class StudySet {
         _name = name;
     }
 
-    protected string _name = "";
+    private string _name = "";
     
-    protected List<FlashCard> _studySet = new List<FlashCard>{};
+    private List<FlashCard> _studySet = new List<FlashCard>{};
 
     public void AddCard(FlashCard flashCard)
     {

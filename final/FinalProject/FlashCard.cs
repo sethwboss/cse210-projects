@@ -8,8 +8,8 @@ public class FlashCard {
         _definition = definition;
     }
 
-    protected string _term = "";
-    protected string _definition = "";
+    private string _term = "";
+    private string _definition = "";
 
 
     public string GetDisplayString() {
