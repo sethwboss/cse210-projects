@@ -26,10 +26,10 @@ class Program
         Console.WriteLine("   1. Create New Study Set");
         Console.WriteLine("   2. View Study Set");
         Console.WriteLine("   3. Delete Study Set");
-        Console.WriteLine("   4. Quiz Names");
-        Console.WriteLine("   5. Quiz Terms");
+        Console.WriteLine("   4. Term Quiz");
+        Console.WriteLine("   5. Definition Quiz");
         Console.WriteLine("   6. Multiple Choice Quiz");
-        Console.WriteLine("   7. See Scores");
+        Console.WriteLine("   7. See Points");
         Console.WriteLine("   8. Quit");
         Console.Write("Select a choice from the menu: ");
 
@@ -48,11 +48,11 @@ class Program
             return true;
         }
         if (response == 4) {
-            menuManager.QuizNames();
+            menuManager.TermQuiz();
             return true;
         }
         if (response == 5) {
-            menuManager.QuizTerms();
+            menuManager.DefinitionQuiz();
             return true;
         }
         if (response == 6) {

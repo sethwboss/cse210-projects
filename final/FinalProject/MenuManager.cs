@@ -69,20 +69,7 @@ public class MenuManager
         _allStudySets.RemoveAt(selectedNum - 1);
 
     }
-    public void QuizNames()
-    {
-        NameQuiz nameQuiz = new NameQuiz();
-
-        DisplayStudySets();
-        Console.WriteLine();
-        Console.Write("Which study set would you like to quiz from? (type the number 1, 2, etc.): ");
-        int selectedNum = int.Parse(Console.ReadLine());
-        Console.WriteLine();
-        StudySet selectedStudySet = _allStudySets[selectedNum - 1];
-
-        // 5 points for getting all right
-    }
-    public void QuizTerms()
+    public void TermQuiz()
     {
         TermQuiz termQuiz = new TermQuiz();
 
@@ -93,7 +80,26 @@ public class MenuManager
         Console.WriteLine();
         StudySet selectedStudySet = _allStudySets[selectedNum - 1];
 
-        // 10 points for getting all right
+        int points = termQuiz.RunQuiz(selectedStudySet);
+        _totalScore += points;
+        
+        SeeScores();
+    }
+    public void DefinitionQuiz()
+    {
+        DefinitionQuiz definitionQuiz = new DefinitionQuiz();
+
+        DisplayStudySets();
+        Console.WriteLine();
+        Console.Write("Which study set would you like to quiz from? (type the number 1, 2, etc.): ");
+        int selectedNum = int.Parse(Console.ReadLine());
+        Console.WriteLine();
+        StudySet selectedStudySet = _allStudySets[selectedNum - 1];
+
+        int points = definitionQuiz.RunQuiz(selectedStudySet);
+        _totalScore += points;
+        
+        SeeScores();
     }
     public void MultipleChoiceQuiz()
     {
@@ -105,19 +111,36 @@ public class MenuManager
         int selectedNum = int.Parse(Console.ReadLine());
         Console.WriteLine();
         StudySet selectedStudySet = _allStudySets[selectedNum - 1];
-        
-        // 10 points for getting all right
+
+        List<FlashCard> selectedList = selectedStudySet.GetStudyList();
+
+        if (selectedList.Count() > 3) {
+            int points = multipleQuiz.RunQuiz(selectedStudySet);
+            _totalScore += points;
+            SeeScores();
+        }
+        else
+        {
+            Console.WriteLine($"This study set only has {selectedList.Count()} flashcards. Need at least 4 flashcards for the multiple choice quiz.");
+        }
     }
     public void SeeScores()
     {
         Console.WriteLine();
-        Console.WriteLine($"Your total score is {_totalScore}");
+        Console.WriteLine($"Your total score is {_totalScore} points.");
+        Console.WriteLine("If you reach 100 points, you will become an expert of studying, and if you reach 500 points, you will become a master of studying.");
 
         if (_totalScore >= 100)
         {
             Console.WriteLine();
-            Console.WriteLine("*** CONGRATULATIONS!! You've reached beyond 100 points. You're a master at studying. ***");
+            Console.WriteLine("Congratulations!! You've reached beyond 100 points. You're achieved the rank of expert at studying.");
         }
+        if (_totalScore >= 500)
+        {
+            Console.WriteLine();
+            Console.WriteLine("*** CONGRATULATIONS!! You've reached beyond 100 points. You're achieved the rank of master at studying. ***");
+        }
+        Console.WriteLine();
     }
  
     

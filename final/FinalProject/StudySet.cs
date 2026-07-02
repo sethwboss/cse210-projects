@@ -38,6 +38,11 @@ public class StudySet {
         return _totalLines;
     }
 
+    public List<FlashCard> GetStudyList()
+    {
+        return _studySet;
+    }
+
     //public abstract string GetSaveString();
     //public abstract int RecordEvent();
 }
