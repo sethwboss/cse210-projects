@@ -46,31 +46,28 @@ public class MultipleQuiz : Quiz
 
             string[] totalTerms = new string [4];
 
-            int count3 = 1;
-            while (count3 < 4)
+
+
+            Console.WriteLine();
+            int count4 = 0;
+            bool loop = true;
+            while (loop)
             {
-
-                Console.WriteLine();
-                int count4 = 0;
-                bool loop = true;
-                while (loop)
+                int randomIndex = random.Next(4);
+                if (totalTerms[randomIndex] == null)
                 {
-                    int randomIndex = random.Next(4);
-                    if (totalTerms[randomIndex] == null)
-                    {
-                        //Console.WriteLine($"{count3}. {totalTerms[randomIndex]}");
-                        totalTerms[randomIndex] = randomTerms[randomIndex];
-                        count4 ++;
-                    }
-                    if (count4 == 3)
-                    {
-                        loop = false;
-                    }
+                    //Console.WriteLine($"{count3}. {totalTerms[randomIndex]}");
+                    totalTerms[count4] = randomTerms[randomIndex];
+                    count4 ++;
                 }
-
-                count3 ++;
+                if (count4 == 3)
+                {
+                    loop = false;
+                }
             }
-            Console.WriteLine($"What is the term for {currentDefinition}");
+
+
+            Console.WriteLine($"Which of the following terms best match this definition? '{currentDefinition}'");
             Console.WriteLine($"1. {totalTerms[0]}");
             Console.WriteLine($"2. {totalTerms[1]}");
             Console.WriteLine($"3. {totalTerms[2]}");
@@ -78,7 +75,7 @@ public class MultipleQuiz : Quiz
             Console.WriteLine();
         
 
-            Console.Write("Answer: ");
+            Console.Write("Answer (type the number 1, 2, 3, or 4): ");
 
             string answer = Console.ReadLine();
 
