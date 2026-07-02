@@ -32,7 +32,7 @@ public abstract class Quiz
         Console.WriteLine();
         Console.Write("Well done!!");
         Console.WriteLine();
-        Console.WriteLine($"You earned {_points} points from this quiz");
+        Console.WriteLine($"You earned {_points} points from this quiz.");
         Console.WriteLine();
  
     }
