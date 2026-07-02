@@ -17,6 +17,7 @@ class Program
         while (loop)
         {
             loop = program.DisplayMenu(menuManager);
+            Console.WriteLine();
         }
     }
 
@@ -33,7 +34,12 @@ class Program
         Console.WriteLine("   8. Quit");
         Console.Write("Select a choice from the menu: ");
 
-        int response = int.Parse(Console.ReadLine());
+        string responseString = (Console.ReadLine());
+        int response = 0;
+        try {
+            response = int.Parse(responseString);
+        }
+        catch {}
 
         if (response == 1) {
             menuManager.CreateStudySet();
