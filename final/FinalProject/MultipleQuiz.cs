@@ -42,18 +42,8 @@ public class MultipleQuiz : Quiz
             string currentTerm = flashcard.GetTerm();
             string currentDefinition = flashcard.GetDefinition();
 
-            int[] takenTerms = new int [4];
-            string[] totalTerms =
-            {
-                currentTerm,
-                randomTerms[0],
-                randomTerms[1],
-                randomTerms[2]
-            };
+            string[] totalTerms = new string [4];
 
-            Random random1 = new Random();
-            int randomIndex1 = random1.Next(4);
-            Console.WriteLine($"{randomIndex1}. {currentTerm}");
 
             int count3 = 1;
             while (count3 < 4)
@@ -66,16 +56,20 @@ public class MultipleQuiz : Quiz
                 {
                     Random random = new Random();
                     int randomIndex = random.Next(4);
-                    if (randomIndex != takenTerms[randomIndex])
+                    if (totalTerms[randomIndex] == "")
                     {
-                        Console.WriteLine($"{count3}. {totalTerms[randomIndex]}");
+                        //Console.WriteLine($"{count3}. {totalTerms[randomIndex]}");
                         loop = false;
-                        takenTerms[randomIndex] = randomIndex;
+                        totalTerms[randomIndex] = randomTerms[randomIndex];
                     }
                 }
 
                 count3 ++;
             }
+            Console.WriteLine($"1. {totalTerms[1]}");
+            Console.WriteLine($"1. {totalTerms[2]}");
+            Console.WriteLine($"1. {totalTerms[3]}");
+            Console.WriteLine($"1. {totalTerms[4]}");
 
         
 
