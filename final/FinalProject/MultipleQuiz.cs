@@ -31,43 +31,43 @@ public class MultipleQuiz : Quiz
             string currentTerm = flashcard.GetTerm();
             string currentDefinition = flashcard.GetDefinition();
 
-            string[] FourTerms = new string [4];
-            FourTerms[3] = currentTerm;
+            string[] fourTerms = new string [4];
+            fourTerms[3] = currentTerm;
 
-            int count2 = 0;
-            while (count2 < 3)
+            int countTwo = 0;
+            while (countTwo < 3)
             {
                 int randomIndex = random.Next(studyList.Count);
                 FlashCard randomFlashcard = studyList[randomIndex];
                 string newTerm = randomFlashcard.GetTerm();
-                if (!FourTerms.Contains(newTerm))
+                if (!fourTerms.Contains(newTerm))
                 {
-                    FourTerms[count2] = newTerm;
-                    count2 ++;
+                    fourTerms[countTwo] = newTerm;
+                    countTwo ++;
                 }
             }
 
-            string[] RandomizedTerms = new string [4];
+            string[] randomizedTerms = new string [4];
 
-            int count3 = 0;
-            while (count3 < 4)
+            int countThree = 0;
+            while (countThree < 4)
             {
                 int randomIndex = random.Next(4);
    
-                if (!RandomizedTerms.Contains(FourTerms[randomIndex]))
+                if (!randomizedTerms.Contains(fourTerms[randomIndex]))
                 {
-                    RandomizedTerms[count3] = FourTerms[randomIndex];
-                    count3 ++;
+                    randomizedTerms[countThree] = fourTerms[randomIndex];
+                    countThree ++;
                 }
 
             }
 
             Console.WriteLine();
             Console.WriteLine($"Question {count}. Which of the following terms best match this definition? '{currentDefinition}'");
-            Console.WriteLine($"1. {RandomizedTerms[0]}");
-            Console.WriteLine($"2. {RandomizedTerms[1]}");
-            Console.WriteLine($"3. {RandomizedTerms[2]}");
-            Console.WriteLine($"4. {RandomizedTerms[3]}");
+            Console.WriteLine($"1. {randomizedTerms[0]}");
+            Console.WriteLine($"2. {randomizedTerms[1]}");
+            Console.WriteLine($"3. {randomizedTerms[2]}");
+            Console.WriteLine($"4. {randomizedTerms[3]}");
             Console.WriteLine();
         
 
@@ -76,18 +76,18 @@ public class MultipleQuiz : Quiz
             string answer = Console.ReadLine();
             int intAnswer = int.Parse(answer);
             
-            int count4 = 0;
+            int countFour = 0;
             int position = 0;
-            bool booler = true;
-            while (booler)
+            bool isFound = true;
+            while (isFound)
             {
-                if (RandomizedTerms[count4] == currentTerm)
+                if (randomizedTerms[countFour] == currentTerm)
                 {
-                    booler = false;
-                    position = count4 + 1;
+                    isFound = false;
+                    position = countFour + 1;
                 }
 
-                count4 ++;
+                countFour ++;
             }
             
 

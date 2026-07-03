@@ -22,20 +22,20 @@ public class StudySet {
         
         Console.WriteLine($"{_name}");
         
-        string _totalLines = "";
+        string totalLines = "";
         int count = 0;
         foreach (FlashCard flashCard in _studySet) {
             count ++;
 
-            string _line = $"{count}. {flashCard.GetDisplayString()}";
+            string line = $"{count}. {flashCard.GetDisplayString()}";
 
-            _totalLines += _line;
-            _totalLines += "\n";
+            totalLines += line;
+            totalLines += "\n";
 
         }
         
 
-        return _totalLines;
+        return totalLines;
     }
 
     public List<FlashCard> GetStudyList()

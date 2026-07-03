@@ -37,11 +37,6 @@ public abstract class Quiz
  
     }
 
-    public virtual void ParseStudySet(StudySet studyset)
-    {
-        
-    }
-
     public abstract void DisplayQuestions(StudySet studyset);
 
 

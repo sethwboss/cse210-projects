@@ -13,8 +13,8 @@ public class FlashCard {
 
 
     public string GetDisplayString() {
-        string _line =  $"{_term}: {_definition}";
-        return _line;
+        string line =  $"{_term}: {_definition}";
+        return line;
     }
     
     public string GetDefinition() {
