@@ -128,17 +128,17 @@ public class MenuManager
     {
         Console.WriteLine();
         Console.WriteLine($"Your total score is {_totalScore} points.");
-        Console.WriteLine("If you reach 100 points, you will become an expert of studying, and if you reach 500 points, you will become a master of studying.");
+        Console.WriteLine("If you reach 100 points, you will become an EXPERT of studying, and if you reach 500 points, you will become a MASTER of studying.");
 
         if (_totalScore >= 100)
         {
             Console.WriteLine();
-            Console.WriteLine("Congratulations!! You've reached beyond 100 points. You're achieved the rank of expert at studying.");
+            Console.WriteLine("Congratulations!! You've reached 100 points. You've achieved the rank of EXPERT at studying.");
         }
         if (_totalScore >= 500)
         {
             Console.WriteLine();
-            Console.WriteLine("*** CONGRATULATIONS!! You've reached beyond 100 points. You're achieved the rank of master at studying. ***");
+            Console.WriteLine("*** CONGRATULATIONS!! You've reached 100 points. You've achieved the rank of MASTER at studying. ***");
         }
         Console.WriteLine();
     }

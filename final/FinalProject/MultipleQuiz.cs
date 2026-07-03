@@ -27,59 +27,71 @@ public class MultipleQuiz : Quiz
         int count = 0;
         foreach (FlashCard flashcard in studyList)
         {
-            int count2 = 0;
-            string[] randomTerms = new string [4];
-            while (count2 < 3)
-            {
-                int randomIndex = random.Next(studyList.Count);
-                FlashCard randomFlashcard = studyList[randomIndex];
-                randomTerms[count2] = randomFlashcard.GetTerm();
-
-                count2 ++;
-            }
-
             count ++;
             string currentTerm = flashcard.GetTerm();
             string currentDefinition = flashcard.GetDefinition();
 
-            randomTerms[3] = currentTerm;
+            string[] FourTerms = new string [4];
+            FourTerms[3] = currentTerm;
 
-            string[] totalTerms = new string [4];
-
-
-
-            Console.WriteLine();
-            int count4 = 0;
-            bool loop = true;
-            while (loop)
+            int count2 = 0;
+            while (count2 < 3)
             {
-                int randomIndex = random.Next(4);
-                if (totalTerms[randomIndex] == null)
+                int randomIndex = random.Next(studyList.Count);
+                FlashCard randomFlashcard = studyList[randomIndex];
+                string newTerm = randomFlashcard.GetTerm();
+                if (!FourTerms.Contains(newTerm))
                 {
-                    //Console.WriteLine($"{count3}. {totalTerms[randomIndex]}");
-                    totalTerms[count4] = randomTerms[randomIndex];
-                    count4 ++;
-                }
-                if (count4 == 3)
-                {
-                    loop = false;
+                    FourTerms[count2] = newTerm;
+                    count2 ++;
                 }
             }
 
+            string[] RandomizedTerms = new string [4];
 
-            Console.WriteLine($"Which of the following terms best match this definition? '{currentDefinition}'");
-            Console.WriteLine($"1. {totalTerms[0]}");
-            Console.WriteLine($"2. {totalTerms[1]}");
-            Console.WriteLine($"3. {totalTerms[2]}");
-            Console.WriteLine($"4. {totalTerms[3]}");
+            int count3 = 0;
+            while (count3 < 4)
+            {
+                int randomIndex = random.Next(4);
+   
+                if (!RandomizedTerms.Contains(FourTerms[randomIndex]))
+                {
+                    RandomizedTerms[count3] = FourTerms[randomIndex];
+                    count3 ++;
+                }
+
+            }
+
+            Console.WriteLine();
+            Console.WriteLine($"Question {count}. Which of the following terms best match this definition? '{currentDefinition}'");
+            Console.WriteLine($"1. {RandomizedTerms[0]}");
+            Console.WriteLine($"2. {RandomizedTerms[1]}");
+            Console.WriteLine($"3. {RandomizedTerms[2]}");
+            Console.WriteLine($"4. {RandomizedTerms[3]}");
             Console.WriteLine();
         
 
-            Console.Write("Answer (type the number 1, 2, 3, or 4): ");
+            Console.Write("Answer (type 1, 2, 3, or 4): ");
 
             string answer = Console.ReadLine();
+            int intAnswer = int.Parse(answer);
+            
+            int count4 = 0;
+            int position = 0;
+            bool booler = true;
+            while (booler)
+            {
+                if (RandomizedTerms[count4] == currentTerm)
+                {
+                    booler = false;
+                    position = count4 + 1;
+                }
 
-            if (answer == currentTerm)
+                count4 ++;
+            }
+            
+
+            if (intAnswer == position)
             {
                 _points ++;
             }
